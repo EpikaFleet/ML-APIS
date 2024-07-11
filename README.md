@@ -7,7 +7,6 @@ This is a Python Flask application that requires Python 3.11. This document prov
 ## Prerequisites
 
 - Python 3.11
-- Flask
 - Postman (for testing APIs)
 
 ## Setup Instructions
