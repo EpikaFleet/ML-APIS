@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "626ec372-c814-4ed0-8bb1-6db6da1f731e",
+		"name": "ML APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34144433"
+	},
+	"item": [
+		{
+			"name": "Calculate Distance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"invoice_id\": 115684,\n    \"inv_name\": \"89353\",\n    \"inv_date\": \"00:00.0\",\n    \"tech_id\": 2523,\n    \"tech_name\": \"Scott Massie - Truck 78 (RJG/LWG)\",\n    \"payroll_id\": 895,\n    \"product\": \"3/8\\\" Large Step Head Bolt W/Nut\",\n    \"prod_ref\": \"CS-375x275 / 18C624\",\n    \"prod_type\": \"part\",\n    \"unit_price\": 2.31,\n    \"qty\": 2.51,\n    \"part_cost\": 1.35,\n    \"price_subtotal\": 27.72,\n    \"invoice_total\": 573.24,\n    \"customer_name\": \"Landstar Systems, Inc. (MI, IN, OH, KY, PA, MO) - Sales Tax Exempt)\",\n    \"company_name\": \"Fleet Mobile Maintenance, Inc.\",\n    \"vmrs_code\": \"\",\n    \"state\": \"posted\",\n    \"part_id\": 3307\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:5000/calculate_distance",
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reccomendations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"invoice_id\": 152,\n    \"inv_name\": \"INV/2021/5003\",\n    \"inv_date\": \"2021-04-12 00:00:00.000\",\n    \"tech_id\": 47,\n    \"tech_name\": \"David Mayville - Truck 13 (RDM)\",\n    \"payroll_id\": 110,\n    \"invoice_total\": 236.57,\n    \"customer_name\": \"Xtra Lease - Detroit\",\n    \"company_name\": \"Fleet Mobile Maintenance, Inc.\",\n    \"part_ids\": [2082, 1670, 3412, 3443]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:5000//recommendations",
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		}
+	]
+}
